@@ -1,0 +1,49 @@
+# Airsyntax
+
+A high-performance, bilingual (English/Chinese) desktop relay and bridging utility designed for seamless real-time text transmission and synchronization between desktop environments and multiple target iPhones. Airsyntax utilizes a robust local WebSocket architecture coupled with secure dynamic tunneling to establish instantaneous, zero-configuration remote connectivity without external runtime dependencies.
+
+---
+
+## Architecture & System Overview
+
+Airsyntax is engineered as a self-contained desktop application that integrates an asynchronous ASGI server lifecycle directly alongside a native operating system window manager.
+
+* **Core Backend Framework**: Built on Python using **FastAPI** for high-throughput asynchronous request routing and native **WebSockets** for real-time bi-directional message dispatching.
+* **Embedded Desktop Runtime**: Utilizes **PyWebView** to render a clean, frameless, and flicker-free native window container, eliminating traditional browser chrome and system command prompt dependencies.
+* **Dynamic Tunneling Engine**: Integrates automated tunnel orchestration to securely expose local socket instances to remote mobile clients instantly upon application startup.
+* **Multi-Device Client Scaling**: Supports concurrent multi-client connections simultaneously, allowing an unlimited number of connected iPhones to receive broadcast streams or push data back to the host system in real time.
+
+---
+
+## Key Features
+
+* **Bilingual Support**: Available in dedicated English (`server_en`) and Chinese (`server_zh`) interface implementations tailored for localized workflow integration.
+* **Instant QR Provisioning**: Automatically generates and renders dynamic session QR codes upon tunnel activation, allowing immediate scanning and connection from iPhones.
+* **Bi-Directional Real-Time Relay**:
+* *Desktop-to-iPhone*: Broadcast text payloads, notes, or formatted strings instantly to all connected iPhones.
+* *iPhone-to-Desktop*: Push captured or edited text directly back from mobile clients to the host computer interface with automated clipboard synchronization.
+
+
+* **Zero System Footprint**: Operates entirely as a portable standalone executable requiring no manual network configuration or background service installation on target machines.
+
+---
+
+## Technical Specifications
+
+| Component | Technology / Protocol |
+
+| **Server Runtime** ⸺ Python, Uvicorn, FastAPI |
+| **Desktop Interface** ⸺ PyWebView (Native Web Container) |
+| **Communication Protocol** ⸺ WebSockets (`/ws`, `/admin-ws`), HTTP JSON API |
+| **Tunneling Layer** ⸺ Secure Dynamic Tunnel Routing |
+| **Client Target** ⸺ iOS / iPhone Safari Web Client |
+
+---
+
+## Usage Guide
+
+1. Launch the compiled executable on the host machine.
+2. Wait for the initialization sequence to complete and the dynamic connection tunnel to establish.
+3. Scan the generated QR code using the camera or a QR reader on your **iPhone** to open the secure mobile relay interface.
+4. Type or paste text into the desktop control panel and click **Push to All iPhones** (or equivalent localized button) to broadcast instantly.
+5. Incoming payloads pushed from any connected **iPhone** will automatically populate the desktop interface with options for immediate clipboard copying.
