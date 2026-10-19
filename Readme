@@ -1,68 +1,57 @@
 # Airsyntax
 
-Airsyntax is a standalone Windows desktop application designed to provide fast, bidirectional text communication between a desktop computer and connected iPhones. It integrates a Python ASGI backend with a PyWebView desktop interface and uses Cloudflare Tunnel to establish external connectivity through HTTPS.
+Airsyntax is a standalone Windows desktop application for real-time text communication between a desktop computer and multiple iPhones through a secure Cloudflare Tunnel connection.
 
 ## Key Features
 
-- **Bilingual Interface:** Choose between English and Chinese during installation.
-- **Instant QR Provisioning:** Automatically generates a session QR code when the connection tunnel is established, allowing iPhones to access the mobile interface by scanning the code.
-- **Desktop-to-iPhone Text Relay:** Broadcast text, notes, and formatted strings from the desktop to connected mobile devices.
-- **iPhone-to-Desktop Text Relay:** Send captured or edited text from an iPhone back to the desktop, with automated clipboard synchronization.
-- **Multi-Device Connectivity:** Supports simultaneous connections from multiple devices, with multi-device operation tested.
-- **Dynamic Tunnel Connectivity:** Establishes a Cloudflare Tunnel connection with a URL that changes whenever the application restarts.
-- **Standalone Installation:** Distributed through a single installer that installs the application and its required components.
+- **Bilingual Support:** Choose English or Chinese during installation.
+- **Instant QR Provisioning:** Automatically generates a QR code when the connection tunnel is established.
+- **Bidirectional Text Relay:** Send text from the desktop to connected iPhones and transfer edited text back to the desktop.
+- **Clipboard Synchronization:** Automatically synchronizes text received from mobile clients with the desktop clipboard.
+- **Multi-Device Support:** Connect multiple iPhones simultaneously.
+- **Dynamic Tunnel:** Generates a new Cloudflare Tunnel URL whenever the application restarts.
+- **Standalone Installer:** Installs the application and its required components without requiring a separate Python installation.
 
 ## How It Works
 
-Airsyntax combines a Python ASGI backend with a desktop window rendered through PyWebView. On startup, the application initializes its FastAPI/Uvicorn server and Cloudflare Tunnel, then generates a QR code for mobile access.
-
-Once an iPhone connects through the generated URL, the desktop and mobile interfaces can exchange text in both directions. WebSockets support real-time communication, while the HTTP JSON API handles application requests.
-
-An active internet connection is required to establish the Cloudflare Tunnel.
+Airsyntax runs a Python FastAPI server with Uvicorn inside a PyWebView desktop application. Cloudflare Tunnel provides external connectivity, while WebSockets enable real-time text communication between the desktop and connected iPhones.
 
 ## Installation
 
 ### Prerequisites
 
-- Windows 10, Windows 11, or later Windows versions.
-- An active internet connection for Cloudflare Tunnel connectivity.
-- The standalone Airsyntax installer.
+- Windows 10 / 11 or later.
+- An active internet connection.
 
 ### Getting Started
 
-1. Visit the [Releases](https://github.com/kabeer2026/Airsyntax/releases/latest) page.
+1. Go to the [Releases](https://github.com/kabeer2026/Airsyntax/releases/latest) page.
 2. Download `Airsyntax_Installer.exe`.
-3. Run the installer and select your preferred interface language, English or Chinese.
+3. Run the installer and select English or Chinese.
 4. Complete the installation and launch Airsyntax.
-
-The installer handles the application's required components, so a separate Python installation or manual tunnel installation is not required.
 
 ## Quick Start Guide
 
-1. **Launch Airsyntax:** Open the installed desktop application.
-2. **Initialize the Tunnel:** Allow the application to start its server and establish the Cloudflare Tunnel connection.
-3. **Scan the QR Code:** Use your iPhone camera to scan the generated session QR code and open the mobile relay interface.
-4. **Send Text:** Broadcast text from the desktop interface to connected iPhones.
-5. **Sync Text Back:** Send captured or edited text from your iPhone to the desktop, using clipboard synchronization where applicable.
+1. **Launch Airsyntax:** Open the installed application.
+2. **Initialize the Tunnel:** Wait for the server and Cloudflare Tunnel to start.
+3. **Connect Your iPhone:** Scan the generated QR code with your iPhone camera.
+4. **Transfer Text:** Send text between the desktop and connected iPhones.
+5. **Sync Clipboard:** Transfer mobile text back to the desktop with clipboard synchronization.
 
-The tunnel URL changes whenever Airsyntax restarts, so scan the newly generated QR code after a restart.
+**Note:** The tunnel URL changes whenever Airsyntax restarts. Scan the new QR code to reconnect.
 
 ## Tech Stack & Architecture
 
-- **Programming Language:** Python.
-- **Backend Framework:** FastAPI for application routing and API handling.
-- **ASGI Server:** Uvicorn for serving the asynchronous application.
-- **Desktop Interface:** PyWebView for the desktop window container.
-- **Real-Time Communication:** WebSockets using the `/ws` and `/admin-ws` endpoints.
-- **API Communication:** HTTP JSON API.
-- **External Connectivity:** Cloudflare Tunnel, with HTTPS connectivity.
-- **Windows Packaging:** PyInstaller build specifications and an Inno Setup installer.
-- **Localization:** Separate English (`server_en.py`) and Chinese (`server_zh.py`) implementations, with language selection during installation.
+- **Backend:** Python, FastAPI, and Uvicorn.
+- **Desktop Interface:** PyWebView.
+- **Real-Time Communication:** WebSockets (`/ws`, `/admin-ws`).
+- **API:** HTTP JSON API.
+- **Tunneling:** Cloudflare Tunnel over HTTPS.
+- **Localization:** Separate English (`server_en.py`) and Chinese (`server_zh.py`) implementations.
+- **Packaging:** PyInstaller and Inno Setup.
 
 ## Security & Privacy
 
-Airsyntax uses Cloudflare Tunnel to provide external connectivity over HTTPS. An internet connection is required for the tunnel to connect the desktop application with mobile clients.
-
-The tunnel URL changes when the application restarts. Users should scan the newly generated QR code to connect to the current session.
-
-This documentation describes the confirmed connection architecture without making unverified claims about end-to-end encryption, authentication mechanisms, or data-retention guarantees.
+- **Encrypted Transport:** HTTPS is used for connections through Cloudflare Tunnel.
+- **Internet Requirement:** An active internet connection is required to establish the tunnel.
+- **Dynamic Session URL:** The tunnel URL changes on each application restart.
