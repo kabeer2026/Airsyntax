@@ -1,67 +1,63 @@
-# Airsyntax
+Airsyntax
 
 Airsyntax is a self-contained desktop application engineered to integrate an asynchronous ASGI server lifecycle directly alongside a native operating system window manager.
 
----
+Key Features
 
-## Key Features
+Bilingual Support: Available in dedicated English (server_en) and Chinese (server_zh) interface implementations tailored for localized workflow integration.
 
-* **Bilingual Support**: Available in dedicated English (`server_en`) and Chinese (`server_zh`) interface implementations tailored for localized workflow integration.
-* **Instant QR Provisioning**: Automatically generates and renders dynamic session QR codes upon tunnel activation, allowing immediate scanning and connection from iPhones.
-* **Bi-Directional Real-Time Relay**:
-* **Desktop-to-iPhone**: Broadcast text payloads, notes, or formatted strings instantly to all connected iPhones.
-* **iPhone-to-Desktop**: Push captured or edited text directly back from mobile clients to the host computer interface with automated clipboard synchronization.
+Instant QR Provisioning: Automatically generates and renders dynamic session QR codes upon tunnel activation, allowing immediate scanning and connection from iPhones.
 
+Bi-Directional Real-Time Relay:
 
-* **Zero System Footprint**: Operates entirely as a portable standalone executable requiring no manual network configuration or background service installation on target machines.
+Desktop-to-iPhone: Broadcast text payloads, notes, or formatted strings instantly to all connected iPhones.
 
----
+iPhone-to-Desktop: Push captured or edited text directly back from mobile clients to the host computer interface with automated clipboard synchronization.
 
-## How It Works
+Zero System Footprint: Operates entirely as a portable standalone executable requiring no manual network configuration or background service installation on target machines.
+
+How It Works: 
 
 Airsyntax functions as a parent application that embeds a high-performance Python ASGI backend directly inside a native window container. Upon startup, it boots an asynchronous Uvicorn/FastAPI server alongside a dynamic tunneling engine to securely expose local socket instances, while PyWebView renders a clean, frameless interface for seamless cross-device communication.
 
----
+Installation
+Prerequisites
 
-## Installation
+Windows 10 / 11 (64-bit) or compatible desktop environment supporting Python/PyWebView runtimes.
 
-### Prerequisites
+Getting Started
 
-* Windows 10 / 11 (64-bit) or compatible desktop environment supporting Python/PyWebView runtimes.
+Go to the Releases page.
 
-### Getting Started
+Download the latest release build (Airsyntax-v1.0.0.zip or installer executable).
 
-1. Go to the **Releases** page.
-2. Download the latest release build (`Airsyntax-v1.0.0.zip` or installer executable).
-3. Extract and launch `Airsyntax.exe`.
+Extract and launch Airsyntax.exe.
 
----
+Quick Start Guide
 
-## Quick Start Guide
+Launch Airsyntax: Open the standalone desktop application.
 
-1. **Launch Airsyntax**: Open the standalone desktop application.
-2. **Initialize Tunnel**: Wait for the initialization sequence to complete and the dynamic connection tunnel to establish.
-3. **Scan QR Code**: Scan the generated session QR code using your **iPhone** camera to open the secure mobile relay interface.
-4. **Broadcast & Sync**: Push payloads instantly from the desktop interface or sync text back from your mobile client with automated clipboard integration.
+Initialize Tunnel: Wait for the initialization sequence to complete and the dynamic connection tunnel to establish.
 
----
+Scan QR Code: Scan the generated session QR code using your iPhone camera to open the secure mobile relay interface.
 
-## Tech Stack & Architecture
+Broadcast & Sync: Push payloads instantly from the desktop interface or sync text back from your mobile client with automated clipboard integration.
 
-* **Server Runtime**: Python, Uvicorn, FastAPI (high-throughput asynchronous routing and WebSockets).
-* **Desktop Interface**: PyWebView for a frameless, flicker-free native window container.
-* **Communication Protocol**: WebSockets (`/ws`, `/admin-ws`) and HTTP JSON API for real-time bi-directional message dispatching.
-* **Tunneling & Scaling**: Secure dynamic tunnel routing supporting concurrent multi-client connections from unlimited mobile devices.
+Tech Stack & Architecture
 
----
+Server Runtime: Python, Uvicorn, FastAPI (high-throughput asynchronous routing and WebSockets).
 
-## Security & Privacy
+Desktop Interface: PyWebView for a frameless, flicker-free native window container.
 
-* **Zero Cloud Intermediary**: Airsyntax operates locally on your machine, establishing direct communication streams between your host application and connected mobile clients.
-* **Local Data Encapsulation**: Session states, active socket tunnels, and broadcast buffers remain securely handled within local execution boundaries.
+Communication Protocol: WebSockets (/ws, /admin-ws) and HTTP JSON API for real-time bi-directional message dispatching.
 
----
+Tunneling & Scaling: Secure dynamic tunnel routing supporting concurrent multi-client connections from unlimited mobile devices.
 
-## License
+Security & Privacy
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Zero Cloud Intermediary: Airsyntax operates locally on your machine, establishing direct communication streams between your host application and connected mobile clients.
+
+Local Data Encapsulation: Session states, active socket tunnels, and broadcast buffers remain securely handled within local execution boundaries.
+
+License
+Distributed under the MIT License. See LICENSE for more information.
